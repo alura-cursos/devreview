@@ -4,6 +4,8 @@
   "workspaces": ["apps/*"],
   "scripts": {
     "dev": "npm -w apps/web run dev",
-    "build": "npm -w apps/web run build"
+    "build": "npm -w apps/web run build",
+    "mcp:build": "npm -w apps/mcp-server run build",
+    "mcp:inspector": "npm -w apps/mcp-server run inspector"
   }
 }

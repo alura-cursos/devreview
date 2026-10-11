@@ -9,12 +9,13 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+    "start": "node build/index.js",
+    "inspector": "npx -y @modelcontextprotocol/inspector@2.10.1 node build/index.js"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.1",
-    "@supabase/supabase-js": "^2.49.4",
-    "zod": "^3.24.4"
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@supabase/supabase-js": "^2.101.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",

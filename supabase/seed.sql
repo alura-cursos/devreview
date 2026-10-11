@@ -3,7 +3,9 @@
 
 -- Time
 insert into teams (id, name) values
-  ('11111111-1111-1111-1111-111111111111', 'Frontend');
+  ('11111111-1111-1111-1111-111111111111', 'Frontend'),
+  ('22222222-2222-2222-2222-222222222222', 'Backend'),
+  ('33333333-3333-3333-3333-333333333333', 'Integrations');
 
 -- Regras de code review
 insert into review_rules (team_id, category, severity, active, rule) values
@@ -14,7 +16,21 @@ insert into review_rules (team_id, category, severity, active, rule) values
   ('11111111-1111-1111-1111-111111111111', 'architecture', 'warning', false, 'Evitar dependências circulares entre módulos'),
   ('11111111-1111-1111-1111-111111111111', 'style',        'info',    true,  'Documentar funções públicas com JSDoc'),
   ('11111111-1111-1111-1111-111111111111', 'performance',  'info',    true,  'Utilizar lazy loading para rotas secundárias'),
-  ('11111111-1111-1111-1111-111111111111', 'security',     'warning', true,  'Validar e sanitizar todos os inputs do usuário');
+  ('11111111-1111-1111-1111-111111111111', 'security',     'warning', true,  'Validar e sanitizar todos os inputs do usuário'),
+  -- Backend
+  ('22222222-2222-2222-2222-222222222222', 'security',     'error',   true,  'Usar queries parametrizadas; nunca concatenar input em SQL'),
+  ('22222222-2222-2222-2222-222222222222', 'architecture', 'error',   true,  'Manter regras de negócio na camada de serviço, fora dos controllers'),
+  ('22222222-2222-2222-2222-222222222222', 'performance',  'warning', true,  'Evitar consultas N+1; usar joins ou carregamento em lote'),
+  ('22222222-2222-2222-2222-222222222222', 'security',     'warning', true,  'Aplicar autorização em todos os endpoints, não só autenticação'),
+  ('22222222-2222-2222-2222-222222222222', 'style',        'info',    true,  'Usar snake_case para colunas e camelCase para campos de DTO'),
+  ('22222222-2222-2222-2222-222222222222', 'performance',  'info',    false, 'Paginar todas as listagens que retornam coleções'),
+  -- Integrations
+  ('33333333-3333-3333-3333-333333333333', 'security',     'error',   true,  'Validar a assinatura de todo webhook recebido'),
+  ('33333333-3333-3333-3333-333333333333', 'architecture', 'error',   true,  'Isolar cada API externa atrás de um adapter com contrato próprio'),
+  ('33333333-3333-3333-3333-333333333333', 'performance',  'warning', true,  'Definir timeout e retry com backoff exponencial em chamadas externas'),
+  ('33333333-3333-3333-3333-333333333333', 'architecture', 'warning', true,  'Garantir idempotência no processamento de eventos e callbacks'),
+  ('33333333-3333-3333-3333-333333333333', 'style',        'info',    true,  'Registrar logs de requisição e resposta sem dados sensíveis'),
+  ('33333333-3333-3333-3333-333333333333', 'security',     'warning', false, 'Rotacionar periodicamente credenciais de APIs de terceiros');
 
 -- Histórico de reviews
 insert into review_history (team_id, pr_url, pr_number, repo, issues_found, reviewed_at, review_summary) values
